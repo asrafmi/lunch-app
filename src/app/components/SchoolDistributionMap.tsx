@@ -8,18 +8,12 @@ import 'leaflet-defaulticon-compatibility';
 import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import { LOCATION_DATA } from '@/bin/location-data';
 
 const SchoolDistributionMap = ({ data }: any) => {
-  console.log(
-    'data aaaa',
-    data.map((item: any) =>
-      console.log('item.lat', { lat: item.lat, lng: item.lng })
-    )
-  );
-
-  const [center, setCenter] = useState<Object>({
-    lat: -0.850236957887286,
-    lng: 10033633826227400,
+  const [center, setCenter] = useState<any>({
+    lat: -0.9183037743350194,
+    lng: 100.39200272690312,
   });
 
   const mapRef = useRef();
@@ -31,14 +25,15 @@ const SchoolDistributionMap = ({ data }: any) => {
   });
 
   return (
-    <MapContainer center={center as any} zoom={13} ref={mapRef as any}>
+    <MapContainer center={center as any} zoom={12} ref={mapRef as any}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {data && data.length ? (
-        data.map((item: any) => (
+        data.map((item) => (
           <Marker
+            key={item.sekolah_id}
             icon={DefaultIcon}
             position={{ lat: item.lat, lng: item.lng } as any}
           >

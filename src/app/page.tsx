@@ -78,13 +78,17 @@ export default function Home() {
     },
   ];
 
-  useEffect(() => {
-    const data = LOCATION_DATA.filter((e) => e.city_id === selectedCity);
+  const submit = () => {
+    const data = LOCATION_DATA.filter(
+      (e) => e.district_id === selectedDistrict
+    );
 
-    console.log('selectedCity', selectedCity);
+    console.log('selectedDistrict', selectedDistrict);
     console.log('data', data);
     setLocationData(data);
-  }, [selectedCity]);
+    setIsOpen(false);
+  };
+
   return (
     <main className="p-4 md:p-10 flex flex-col gap-2 mx-auto max-w-7xl">
       <div className="flex flex-row gap-2">
@@ -323,7 +327,7 @@ export default function Home() {
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+                      onClick={submit}
                     >
                       Got it, thanks!
                     </button>
