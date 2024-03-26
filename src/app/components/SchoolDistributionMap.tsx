@@ -19,17 +19,17 @@ const SchoolDistributionMap = () => {
 
   const DefaultIcon = L.icon({
     iconUrl: '/map-marker.png',
-    shadowUrl: iconShadow,
+    shadowUrl: iconShadow as any,
     iconSize: [45, 45],
   });
 
   return (
-    <MapContainer center={center} zoom={13} ref={mapRef}>
+    <MapContainer center={center as any} zoom={13} ref={mapRef as any}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker icon={DefaultIcon} position={center}>
+      <Marker icon={DefaultIcon} position={center as any}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>
