@@ -36,23 +36,24 @@ const SchoolDistributionMap = ({ data }: any) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {/* <Marker icon={DefaultIcon} position={center as any}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker> */}
-      {data && data.length
-        ? data.map((item: any) => (
-            <Marker
-              icon={DefaultIcon}
-              position={{ lat: item.lat, lng: item.lng } as any}
-            >
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
-            </Marker>
-          ))
-        : null}
+      {data && data.length ? (
+        data.map((item: any) => (
+          <Marker
+            icon={DefaultIcon}
+            position={{ lat: item.lat, lng: item.lng } as any}
+          >
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        ))
+      ) : (
+        <Marker icon={DefaultIcon} position={center as any}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      )}
     </MapContainer>
   );
 };
