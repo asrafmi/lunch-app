@@ -9,7 +9,9 @@ import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
-const SchoolDistributionMap = () => {
+const SchoolDistributionMap = ({ data }: any) => {
+  console.log('data aaaa', data);
+
   const [center, setCenter] = useState<Object>({
     lat: -6.175344732256595,
     lng: 106.82712185518545,

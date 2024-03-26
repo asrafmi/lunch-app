@@ -1,0 +1,91 @@
+import { apiRequest } from '@/infrastructure/api-request';
+import { backendRequest } from '@/infrastructure/backend-request';
+import to from 'await-to-js';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+const useProvince = () => {
+  const [province, setProvince] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+
+  useEffect(() => {
+    const fetchProvince = async () => {
+      setIsLoading(true);
+
+      const [err, response] = await to(apiRequest.get('/province'));
+      if (err) {
+        setError(err.message);
+        setIsLoading(false);
+        return;
+      }
+
+      setProvince(response.data);
+      setIsLoading(false);
+    };
+
+    fetchProvince();
+  }, []);
+
+  return { province, isLoading, error };
+};
+
+const useCity = (provinceId: string) => {
+  const [city, setCity] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+
+  useEffect(() => {
+    const fetchCity = async () => {
+      setIsLoading(true);
+
+      const [err, response] = await to(apiRequest.get(`/city/${provinceId}`));
+      if (err) {
+        setError(err.message);
+        setIsLoading(false);
+        return;
+      }
+
+      setCity(response.data);
+      setIsLoading(false);
+    };
+
+    fetchCity();
+  }, [provinceId]);
+
+  return { city, isLoading, error };
+};
+
+const useDistrict = (districtId: string) => {
+  console.log('districtId', districtId);
+
+  const [district, setDistrict] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+
+  useEffect(() => {
+    const fetchDistrict = async () => {
+      setIsLoading(true);
+
+      const [err, response] = await to(
+        apiRequest.get(`/district/${districtId}`)
+      );
+      console.log('response', response.data);
+
+      if (err) {
+        setError(err.message);
+        setIsLoading(false);
+        return;
+      }
+
+      setDistrict(response.data);
+      setIsLoading(false);
+    };
+
+    fetchDistrict();
+  }, [districtId]);
+
+  return { district, isLoading, error };
+};
+
+export { useProvince, useCity, useDistrict };
