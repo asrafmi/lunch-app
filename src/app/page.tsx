@@ -1,113 +1,173 @@
-import Image from 'next/image'
+import dynamic from 'next/dynamic';
+const DynamicSchoolDistributionMap = dynamic(
+  () => import('./components/SchoolDistributionMap'),
+  {
+    ssr: false,
+  }
+);
 
 export default function Home() {
+  const registeredSchoolData = [
+    {
+      id: 1,
+      title: 'Sekolah Dasar',
+      value: '15.000',
+    },
+    {
+      id: 2,
+      title: 'Sekolah Menengah Pertama',
+      value: '15.000',
+    },
+    {
+      id: 3,
+      title: 'Sekolah Menengah Atas',
+      value: '15.000',
+    },
+  ];
+
+  const studentsData = [
+    {
+      id: 1,
+      title: 'Sekolah Dasar',
+      value: '10.115.000',
+    },
+    {
+      id: 2,
+      title: 'Sekolah Menengah Pertama',
+      value: '5.000.000',
+    },
+    {
+      id: 3,
+      title: 'Sekolah Menengah Atas',
+      value: '1.500.000',
+    },
+  ];
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
+    <main className="p-4 md:p-10 flex flex-col gap-2 mx-auto max-w-7xl">
+      <div className="flex flex-row gap-2">
+        <div className="basis-1/3 p-6 bg-white border border-gray-200 rounded-lg shadow">
+          <a href="#">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+              Sekolah Terdaftar
+            </h5>
           </a>
+
+          {registeredSchoolData.map((item) => (
+            <div
+              key={item.id}
+              className="block max-w-sm p-6 mb-2 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <h6 className="mb-2 text-md font-normal tracking-tight text-gray-900">
+                {item.title}
+              </h6>
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                {item.value}
+              </h5>
+            </div>
+          ))}
+        </div>
+        <div className="basis-2/3 p-6 bg-white border border-gray-200 rounded-lg shadow">
+          <DynamicSchoolDistributionMap />
         </div>
       </div>
+      <div className="flex flex-row gap-2">
+        <div className="basis-1/3 p-6 bg-white border border-gray-200 rounded-lg shadow">
+          <a href="#">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+              Siswa Penerima Manfaat
+            </h5>
+          </a>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+          {studentsData.map((item) => (
+            <div
+              key={item.id}
+              className="block max-w-sm p-6 mb-2 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100"
+            >
+              <h6 className="mb-2 text-md font-normal tracking-tight text-gray-900">
+                {item.title}
+              </h6>
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                {item.value}
+              </h5>
+            </div>
+          ))}
+        </div>
+        <div className="basis-2/3 p-6 bg-white border border-gray-200 rounded-lg shadow">
+          <a href="#">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+              Aduan Masyarakat
+            </h5>
+          </a>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+          <div className="relative overflow-x-auto">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
+                <tr>
+                  <th scope="col" className="px-6 py-3">
+                    No
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Tanggal
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Nama Pelapor
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Provinsi
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Sekolah
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Deskripsi Masalah
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="bg-white border-b ">
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    1
+                  </th>
+                  <td className="px-6 py-4">Silver</td>
+                  <td className="px-6 py-4">Laptop</td>
+                  <td className="px-6 py-4">$2999</td>
+                  <td className="px-6 py-4">Laptop</td>
+                  <td className="px-6 py-4">$2999</td>
+                </tr>
+                <tr className="bg-white border-b ">
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    2
+                  </th>
+                  <td className="px-6 py-4">White</td>
+                  <td className="px-6 py-4">Laptop PC</td>
+                  <td className="px-6 py-4">$1999</td>
+                  <td className="px-6 py-4">White</td>
+                  <td className="px-6 py-4">Laptop PC</td>
+                </tr>
+                <tr className="bg-white ">
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
+                  >
+                    3
+                  </th>
+                  <td className="px-6 py-4">Black</td>
+                  <td className="px-6 py-4">Accessories</td>
+                  <td className="px-6 py-4">$99</td>
+                  <td className="px-6 py-4">Black</td>
+                  <td className="px-6 py-4">Accessories</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </main>
-  )
+  );
 }
