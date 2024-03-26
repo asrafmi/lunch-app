@@ -56,8 +56,8 @@ const useCity = (provinceId: string) => {
   return { city, isLoading, error };
 };
 
-const useDistrict = (districtId: string) => {
-  console.log('districtId', districtId);
+const useDistrict = (cityId: string) => {
+  console.log('cityId', cityId);
 
   const [district, setDistrict] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -67,10 +67,8 @@ const useDistrict = (districtId: string) => {
     const fetchDistrict = async () => {
       setIsLoading(true);
 
-      const [err, response] = await to(
-        apiRequest.get(`/district/${districtId}`)
-      );
-      console.log('response', response.data);
+      const [err, response] = await to(apiRequest.get(`/district/${cityId}`));
+      // console.log('response', response.data);
 
       if (err) {
         setError(err.message);
@@ -83,7 +81,7 @@ const useDistrict = (districtId: string) => {
     };
 
     fetchDistrict();
-  }, [districtId]);
+  }, [cityId]);
 
   return { district, isLoading, error };
 };

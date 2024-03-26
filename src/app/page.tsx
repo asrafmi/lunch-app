@@ -14,7 +14,7 @@ const DynamicSchoolDistributionMap = dynamic(
 );
 
 export default function Home() {
-  let [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedProvince, setSelectedProvince] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedDistrict, setSelectedDistrict] = useState('');
@@ -79,9 +79,12 @@ export default function Home() {
   ];
 
   useEffect(() => {
-    const data = LOCATION_DATA.filter((e) => e.city_id === selectedDistrict);
+    const data = LOCATION_DATA.filter((e) => e.city_id === selectedCity);
+
+    console.log('selectedCity', selectedCity);
+    console.log('data', data);
     setLocationData(data);
-  }, [setSelectedDistrict]);
+  }, [selectedCity]);
   return (
     <main className="p-4 md:p-10 flex flex-col gap-2 mx-auto max-w-7xl">
       <div className="flex flex-row gap-2">

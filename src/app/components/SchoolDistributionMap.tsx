@@ -10,11 +10,16 @@ import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 const SchoolDistributionMap = ({ data }: any) => {
-  console.log('data aaaa', data);
+  console.log(
+    'data aaaa',
+    data.map((item: any) =>
+      console.log('item.lat', { lat: item.lat, lng: item.lng })
+    )
+  );
 
   const [center, setCenter] = useState<Object>({
-    lat: -6.175344732256595,
-    lng: 106.82712185518545,
+    lat: -0.850236957887286,
+    lng: 10033633826227400,
   });
 
   const mapRef = useRef();
@@ -31,11 +36,23 @@ const SchoolDistributionMap = ({ data }: any) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker icon={DefaultIcon} position={center as any}>
+      {/* <Marker icon={DefaultIcon} position={center as any}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>
-      </Marker>
+      </Marker> */}
+      {data && data.length
+        ? data.map((item: any) => (
+            <Marker
+              icon={DefaultIcon}
+              position={{ lat: item.lat, lng: item.lng } as any}
+            >
+              <Popup>
+                A pretty CSS3 popup. <br /> Easily customizable.
+              </Popup>
+            </Marker>
+          ))
+        : null}
     </MapContainer>
   );
 };
