@@ -1,10 +1,11 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useState, Fragment, use, useEffect } from 'react';
+import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useProvince, useCity, useDistrict } from '@/frontend/hooks/region';
 import { LOCATION_DATA } from '@/bin/location-data';
+import { COMPLAINT_DATA, COMPLAINT_HEADER_DATA } from '@/bin/complaint-data';
 
 const DynamicSchoolDistributionMap = dynamic(
   () => import('./components/SchoolDistributionMap'),
@@ -163,66 +164,26 @@ export default function Home() {
             <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
               <thead className="text-xs text-gray-700 uppercase bg-gray-50 ">
                 <tr>
-                  <th scope="col" className="px-6 py-3">
-                    No
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Tanggal
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Nama Pelapor
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Provinsi
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Sekolah
-                  </th>
-                  <th scope="col" className="px-6 py-3">
-                    Deskripsi Masalah
-                  </th>
+                  {COMPLAINT_HEADER_DATA.map((item) => (
+                    <th key={item.id} scope="col" className="px-6 py-3">
+                      {item.label}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
-                <tr className="bg-white border-b ">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    1
-                  </th>
-                  <td className="px-6 py-4">Silver</td>
-                  <td className="px-6 py-4">Laptop</td>
-                  <td className="px-6 py-4">$2999</td>
-                  <td className="px-6 py-4">Laptop</td>
-                  <td className="px-6 py-4">$2999</td>
-                </tr>
-                <tr className="bg-white border-b ">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    2
-                  </th>
-                  <td className="px-6 py-4">White</td>
-                  <td className="px-6 py-4">Laptop PC</td>
-                  <td className="px-6 py-4">$1999</td>
-                  <td className="px-6 py-4">White</td>
-                  <td className="px-6 py-4">Laptop PC</td>
-                </tr>
-                <tr className="bg-white ">
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                  >
-                    3
-                  </th>
-                  <td className="px-6 py-4">Black</td>
-                  <td className="px-6 py-4">Accessories</td>
-                  <td className="px-6 py-4">$99</td>
-                  <td className="px-6 py-4">Black</td>
-                  <td className="px-6 py-4">Accessories</td>
-                </tr>
+                {COMPLAINT_DATA.map((data) => (
+                  <tr key={data.no} className="bg-white border-b ">
+                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                      {data.no}
+                    </td>
+                    <td className="px-6 py-4">{data.tanggal}</td>
+                    <td className="px-6 py-4">{data.nama_pelapor}</td>
+                    <td className="px-6 py-4">{data.provinsi}</td>
+                    <td className="px-6 py-4">{data.sekolah}</td>
+                    <td className="px-6 py-4">{data.deskripsi_masalah}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -329,7 +290,7 @@ export default function Home() {
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={submit}
                     >
-                      Got it, thanks!
+                      Submit
                     </button>
                   </div>
                 </Dialog.Panel>

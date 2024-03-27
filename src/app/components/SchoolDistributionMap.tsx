@@ -1,19 +1,18 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { Marker, Popup, TileLayer, MapContainer } from 'react-leaflet';
+import { useEffect, useRef, useState } from 'react';
+import { Marker, Popup, TileLayer, MapContainer, useMap } from 'react-leaflet';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import L from 'leaflet';
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet/dist/leaflet.css';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-import { LOCATION_DATA } from '@/bin/location-data';
 
 const SchoolDistributionMap = ({ data }: any) => {
   const [center, setCenter] = useState<any>({
-    lat: -0.9183037743350194,
-    lng: 100.39200272690312,
+    lat: -6.175344732256595,
+    lng: 106.82712185518545,
   });
 
   const mapRef = useRef();
@@ -24,6 +23,54 @@ const SchoolDistributionMap = ({ data }: any) => {
     iconSize: [45, 45],
   });
 
+  function LocationMarker() {
+    const [position, setPosition] = useState(null);
+    const map = useMap();
+    useEffect(() => {
+      setPosition({ lat: data[0].lat, lng: data[0].lng });
+      map.flyTo({ lat: data[0].lat, lng: data[0].lng }, map.getZoom());
+    }, [data]);
+
+    return position === null && data.length === null
+      ? null
+      : data.map((item) => (
+          <Marker
+            key={item.sekolah_id}
+            icon={DefaultIcon}
+            position={{ lat: item.lat, lng: item.lng } as any}
+          >
+            <div className="shadow-md sm:rounded-lg">
+              <Popup>
+                <table>
+                  {[
+                    { id: 1, label: 'Nama Sekolah:', value: item.nama },
+                    {
+                      id: 2,
+                      label: 'Bentuk Pendidikan:',
+                      value: item.bentuk_pendidikan,
+                    },
+                    { id: 3, label: 'NPSN Sekolah:', value: item.npsn },
+                    { id: 4, label: 'Jumlah Pegawai:', value: item.pegawai },
+                    { id: 5, label: 'Jumlah Guru:', value: item.ptk },
+                    { id: 6, label: 'Jumlah Siswa:', value: item.pd },
+                    { id: 7, label: 'Jumlah Ruang Kelas:', value: item.jml_rk },
+                  ].map((data) => (
+                    <tbody key={data.id}>
+                      <tr className="border-b-2 border-gray-300">
+                        <td className="text-xs text-gray-700">{data.label}</td>
+                        <td className="text-end uppercase font-semibold">
+                          {data.value}
+                        </td>
+                      </tr>
+                    </tbody>
+                  ))}
+                </table>
+              </Popup>
+            </div>
+          </Marker>
+        ));
+  }
+
   return (
     <MapContainer center={center as any} zoom={12} ref={mapRef as any}>
       <TileLayer
@@ -31,17 +78,7 @@ const SchoolDistributionMap = ({ data }: any) => {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       {data && data.length ? (
-        data.map((item) => (
-          <Marker
-            key={item.sekolah_id}
-            icon={DefaultIcon}
-            position={{ lat: item.lat, lng: item.lng } as any}
-          >
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
-        ))
+        <LocationMarker />
       ) : (
         <Marker icon={DefaultIcon} position={center as any}>
           <Popup>
