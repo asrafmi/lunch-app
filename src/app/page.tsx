@@ -24,15 +24,15 @@ export default function Home() {
   const { city } = useCity(selectedProvince);
   const { district } = useDistrict(selectedCity);
 
-  const handleChangeProvince = (e) => {
+  const handleChangeProvince = (e: any) => {
     setSelectedProvince(e.target.value);
   };
 
-  const handleChangeCity = (e) => {
+  const handleChangeCity = (e: any) => {
     setSelectedCity(e.target.value);
   };
 
-  const handleChangeDistrict = (e) => {
+  const handleChangeDistrict = (e: any) => {
     setSelectedDistrict(e.target.value);
   };
 
@@ -83,10 +83,7 @@ export default function Home() {
     const data = LOCATION_DATA.filter(
       (e) => e.district_id === selectedDistrict
     );
-
-    console.log('selectedDistrict', selectedDistrict);
-    console.log('data', data);
-    setLocationData(data);
+    setLocationData(data as any);
     setIsOpen(false);
   };
 
@@ -235,7 +232,7 @@ export default function Home() {
                       value={selectedProvince}
                     >
                       {province && province.length
-                        ? province.map((item) => (
+                        ? province.map((item: any) => (
                             <option key={item.id} value={item.id}>
                               {item.name}
                             </option>
@@ -255,7 +252,7 @@ export default function Home() {
                       value={selectedCity}
                     >
                       {selectedProvince && city.length
-                        ? city.map((item) => (
+                        ? city.map((item: any) => (
                             <option key={item.id} value={item.id}>
                               {item.name}
                             </option>
@@ -275,7 +272,7 @@ export default function Home() {
                       value={selectedDistrict}
                     >
                       {selectedCity && district.length
-                        ? district.map((item) => (
+                        ? district.map((item: any) => (
                             <option key={item.id} value={item.id}>
                               {item.name}
                             </option>

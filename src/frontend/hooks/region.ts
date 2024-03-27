@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const useProvince = () => {
-  const [province, setProvince] = useState<string>('');
+  const [province, setProvince] = useState<[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
@@ -31,7 +31,7 @@ const useProvince = () => {
 };
 
 const useCity = (provinceId: string) => {
-  const [city, setCity] = useState<string>('');
+  const [city, setCity] = useState<[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
@@ -57,9 +57,7 @@ const useCity = (provinceId: string) => {
 };
 
 const useDistrict = (cityId: string) => {
-  console.log('cityId', cityId);
-
-  const [district, setDistrict] = useState<string>('');
+  const [district, setDistrict] = useState<[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
@@ -68,7 +66,6 @@ const useDistrict = (cityId: string) => {
       setIsLoading(true);
 
       const [err, response] = await to(apiRequest.get(`/district/${cityId}`));
-      // console.log('response', response.data);
 
       if (err) {
         setError(err.message);

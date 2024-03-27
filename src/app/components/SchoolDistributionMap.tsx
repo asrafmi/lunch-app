@@ -27,13 +27,13 @@ const SchoolDistributionMap = ({ data }: any) => {
     const [position, setPosition] = useState(null);
     const map = useMap();
     useEffect(() => {
-      setPosition({ lat: data[0].lat, lng: data[0].lng });
+      setPosition({ lat: data[0].lat, lng: data[0].lng } as any);
       map.flyTo({ lat: data[0].lat, lng: data[0].lng }, map.getZoom());
     }, [data]);
 
     return position === null && data.length === null
       ? null
-      : data.map((item) => (
+      : data.map((item: any) => (
           <Marker
             key={item.sekolah_id}
             icon={DefaultIcon}
@@ -54,7 +54,7 @@ const SchoolDistributionMap = ({ data }: any) => {
                     { id: 5, label: 'Jumlah Guru:', value: item.ptk },
                     { id: 6, label: 'Jumlah Siswa:', value: item.pd },
                     { id: 7, label: 'Jumlah Ruang Kelas:', value: item.jml_rk },
-                  ].map((data) => (
+                  ].map((data: any) => (
                     <tbody key={data.id}>
                       <tr className="border-b-2 border-gray-300">
                         <td className="text-xs text-gray-700">{data.label}</td>
