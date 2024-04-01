@@ -23,6 +23,12 @@ const SchoolDistributionMap = ({ data }: any) => {
     iconSize: [45, 45],
   });
 
+  const GreenIcon = L.icon({
+    iconUrl: '/green-marker-2.png',
+    shadowUrl: iconShadow as any,
+    iconSize: [30, 30],
+  });
+
   function LocationMarker() {
     const [position, setPosition] = useState(null);
     const map = useMap();
@@ -33,42 +39,83 @@ const SchoolDistributionMap = ({ data }: any) => {
 
     return position === null && data.length === null
       ? null
-      : data.map((item: any) => (
-          <Marker
-            key={item.sekolah_id}
-            icon={DefaultIcon}
-            position={{ lat: item.lat, lng: item.lng } as any}
-          >
-            <div className="shadow-md sm:rounded-lg">
-              <Popup>
-                <table>
-                  {[
-                    { id: 1, label: 'Nama Sekolah:', value: item.nama },
-                    {
-                      id: 2,
-                      label: 'Bentuk Pendidikan:',
-                      value: item.bentuk_pendidikan,
-                    },
-                    { id: 3, label: 'NPSN Sekolah:', value: item.npsn },
-                    { id: 4, label: 'Jumlah Pegawai:', value: item.pegawai },
-                    { id: 5, label: 'Jumlah Guru:', value: item.ptk },
-                    { id: 6, label: 'Jumlah Siswa:', value: item.pd },
-                    { id: 7, label: 'Jumlah Ruang Kelas:', value: item.jml_rk },
-                  ].map((data: any) => (
-                    <tbody key={data.id}>
-                      <tr className="border-b-2 border-gray-300">
-                        <td className="text-xs text-gray-700">{data.label}</td>
-                        <td className="text-end uppercase font-semibold">
-                          {data.value}
-                        </td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </table>
-              </Popup>
-            </div>
-          </Marker>
-        ));
+      : data.map((item: any) =>
+          item.sekolah_id ? (
+            <Marker
+              key={item.sekolah_id}
+              icon={DefaultIcon}
+              position={{ lat: item.lat, lng: item.lng } as any}
+            >
+              <div className="shadow-md sm:rounded-lg">
+                <Popup>
+                  <table>
+                    {[
+                      { id: 1, label: 'Nama Sekolah:', value: item.nama },
+                      {
+                        id: 2,
+                        label: 'Bentuk Pendidikan:',
+                        value: item.bentuk_pendidikan,
+                      },
+                      { id: 3, label: 'NPSN Sekolah:', value: item.npsn },
+                      { id: 4, label: 'Jumlah Pegawai:', value: item.pegawai },
+                      { id: 5, label: 'Jumlah Guru:', value: item.ptk },
+                      { id: 6, label: 'Jumlah Siswa:', value: item.pd },
+                      {
+                        id: 7,
+                        label: 'Jumlah Ruang Kelas:',
+                        value: item.jml_rk,
+                      },
+                    ].map((data: any) => (
+                      <tbody key={data.id}>
+                        <tr className="border-b-2 border-gray-300">
+                          <td className="text-xs text-gray-700">
+                            {data.label}
+                          </td>
+                          <td className="text-end uppercase font-semibold">
+                            {data.value}
+                          </td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </table>
+                </Popup>
+              </div>
+            </Marker>
+          ) : (
+            <Marker
+              key={item.koramil_id}
+              icon={GreenIcon}
+              position={{ lat: item.lat, lng: item.lng } as any}
+            >
+              <div className="shadow-md sm:rounded-lg">
+                <Popup>
+                  <table>
+                    {[
+                      { id: 1, label: 'Nama Koramil:', value: item.nama },
+                      {
+                        id: 2,
+                        label: 'Jumlah Anggota:',
+                        value: item.jumlah_anggota,
+                      },
+                      { id: 3, label: 'Luas Lahan:', value: item.luas },
+                    ].map((data: any) => (
+                      <tbody key={data.id}>
+                        <tr className="border-b-2 border-gray-300">
+                          <td className="text-xs text-gray-700">
+                            {data.label}
+                          </td>
+                          <td className="text-end uppercase font-semibold">
+                            {data.value}
+                          </td>
+                        </tr>
+                      </tbody>
+                    ))}
+                  </table>
+                </Popup>
+              </div>
+            </Marker>
+          )
+        );
   }
 
   return (

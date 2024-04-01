@@ -83,6 +83,8 @@ export default function Home() {
     const data = LOCATION_DATA.filter(
       (e) => e.district_id === selectedDistrict
     );
+    console.log('selectedDistrict', selectedDistrict);
+
     setLocationData(data as any);
     setIsOpen(false);
   };
@@ -126,6 +128,16 @@ export default function Home() {
           </div>
 
           <DynamicSchoolDistributionMap data={locationData} />
+          <div className="flex flex-wrap gap-3 py-2">
+            <div className="flex flex-row gap-1 items-center">
+              <div className="w-2.5 h-2.5 bg-green-400 rounded-sm"></div>
+              <p className="text-sm font-medium">Koramil</p>
+            </div>
+            <div className="flex flex-row gap-1 items-center">
+              <div className="w-2.5 h-2.5 bg-red-500 rounded-sm"></div>
+              <p className="text-sm font-medium">Sekolah</p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="flex flex-row gap-2">
