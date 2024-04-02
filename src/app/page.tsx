@@ -3,9 +3,11 @@
 import dynamic from 'next/dynamic';
 import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import CountUp from 'react-countup';
 import { useProvince, useCity, useDistrict } from '@/frontend/hooks/region';
 import { LOCATION_DATA } from '@/bin/location-data';
 import { COMPLAINT_DATA, COMPLAINT_HEADER_DATA } from '@/bin/complaint-data';
+import Image from 'next/image';
 
 const DynamicSchoolDistributionMap = dynamic(
   () => import('./components/SchoolDistributionMap'),
@@ -47,17 +49,17 @@ export default function Home() {
     {
       id: 1,
       title: 'Sekolah Dasar',
-      value: '15.000',
+      value: '149225',
     },
     {
       id: 2,
       title: 'Sekolah Menengah Pertama',
-      value: '15.000',
+      value: '42907',
     },
     {
       id: 3,
       title: 'Sekolah Menengah Atas',
-      value: '15.000',
+      value: '14573',
     },
   ];
 
@@ -65,17 +67,17 @@ export default function Home() {
     {
       id: 1,
       title: 'Sekolah Dasar',
-      value: '10.115.000',
+      value: '24004000',
     },
     {
       id: 2,
       title: 'Sekolah Menengah Pertama',
-      value: '5.000.000',
+      value: '9970000',
     },
     {
       id: 3,
       title: 'Sekolah Menengah Atas',
-      value: '1.500.000',
+      value: '5008000',
     },
   ];
 
@@ -107,9 +109,11 @@ export default function Home() {
               <h6 className="mb-2 text-md font-normal tracking-tight text-gray-900">
                 {item.title}
               </h6>
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                {item.value}
-              </h5>
+              <CountUp
+                end={item.value}
+                className="mb-2 text-2xl font-bold tracking-tight text-gray-900"
+                duration={5}
+              />
             </div>
           ))}
         </div>
@@ -128,14 +132,22 @@ export default function Home() {
           </div>
 
           <DynamicSchoolDistributionMap data={locationData} />
-          <div className="flex flex-wrap gap-3 py-2">
+          <div className="flex flex-wrap gap-3 py-4">
             <div className="flex flex-row gap-1 items-center">
-              <div className="w-2.5 h-2.5 bg-green-400 rounded-sm"></div>
+              <Image src="/militer.png" width={20} height={20} />
               <p className="text-sm font-medium">Koramil</p>
             </div>
             <div className="flex flex-row gap-1 items-center">
-              <div className="w-2.5 h-2.5 bg-red-500 rounded-sm"></div>
-              <p className="text-sm font-medium">Sekolah</p>
+              <Image src="/tk.png" width={20} height={20} />
+              <p className="text-sm font-medium">TK/KB/PAUD/PKBM/SPS</p>
+            </div>
+            <div className="flex flex-row gap-1 items-center">
+              <Image src="/sd.png" width={20} height={20} />
+              <p className="text-sm font-medium">SD</p>
+            </div>
+            <div className="flex flex-row gap-1 items-center">
+              <Image src="/smp.png" width={20} height={20} />
+              <p className="text-sm font-medium">SMP</p>
             </div>
           </div>
         </div>
@@ -156,9 +168,11 @@ export default function Home() {
               <h6 className="mb-2 text-md font-normal tracking-tight text-gray-900">
                 {item.title}
               </h6>
-              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                {item.value}
-              </h5>
+              <CountUp
+                end={item.value}
+                className="mb-2 text-2xl font-bold tracking-tight text-gray-900"
+                duration={5}
+              />
             </div>
           ))}
         </div>

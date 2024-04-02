@@ -17,17 +17,42 @@ const SchoolDistributionMap = ({ data }: any) => {
 
   const mapRef = useRef();
 
-  const DefaultIcon = L.icon({
-    iconUrl: '/map-marker.png',
-    shadowUrl: iconShadow as any,
-    iconSize: [45, 45],
-  });
-
-  const GreenIcon = L.icon({
-    iconUrl: '/green-marker-2.png',
+  const SdIcon = L.icon({
+    iconUrl: '/sd.png',
     shadowUrl: iconShadow as any,
     iconSize: [30, 30],
   });
+
+  const SmpIcon = L.icon({
+    iconUrl: '/smp.png',
+    shadowUrl: iconShadow as any,
+    iconSize: [30, 30],
+  });
+
+  const TkIcon = L.icon({
+    iconUrl: '/tk.png',
+    shadowUrl: iconShadow as any,
+    iconSize: [30, 30],
+  });
+
+  const MiliterIcon = L.icon({
+    iconUrl: '/militer.png',
+    shadowUrl: iconShadow as any,
+    iconSize: [30, 30],
+  });
+
+  function determineIcon(bentukPendidikan) {
+    switch (bentukPendidikan) {
+      case 'TK':
+        return TkIcon;
+      case 'SD':
+        return SdIcon;
+      case 'SMP':
+        return SmpIcon;
+      default:
+        return TkIcon;
+    }
+  }
 
   function LocationMarker() {
     const [position, setPosition] = useState(null);
@@ -43,7 +68,7 @@ const SchoolDistributionMap = ({ data }: any) => {
           item.sekolah_id ? (
             <Marker
               key={item.sekolah_id}
-              icon={DefaultIcon}
+              icon={determineIcon(item.bentuk_pendidikan)}
               position={{ lat: item.lat, lng: item.lng } as any}
             >
               <div className="shadow-md sm:rounded-lg">
@@ -84,7 +109,7 @@ const SchoolDistributionMap = ({ data }: any) => {
           ) : (
             <Marker
               key={item.koramil_id}
-              icon={GreenIcon}
+              icon={MiliterIcon}
               position={{ lat: item.lat, lng: item.lng } as any}
             >
               <div className="shadow-md sm:rounded-lg">
@@ -127,7 +152,7 @@ const SchoolDistributionMap = ({ data }: any) => {
       {data && data.length ? (
         <LocationMarker />
       ) : (
-        <Marker icon={DefaultIcon} position={center as any}>
+        <Marker icon={TkIcon} position={center as any}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
