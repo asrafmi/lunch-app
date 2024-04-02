@@ -41,7 +41,7 @@ const SchoolDistributionMap = ({ data }: any) => {
     iconSize: [30, 30],
   });
 
-  function determineIcon(bentukPendidikan) {
+  function determineIcon(bentukPendidikan: string) {
     switch (bentukPendidikan) {
       case 'TK':
         return TkIcon;

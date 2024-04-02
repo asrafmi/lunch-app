@@ -49,17 +49,17 @@ export default function Home() {
     {
       id: 1,
       title: 'Sekolah Dasar',
-      value: '149225',
+      value: 149225,
     },
     {
       id: 2,
       title: 'Sekolah Menengah Pertama',
-      value: '42907',
+      value: 42907,
     },
     {
       id: 3,
       title: 'Sekolah Menengah Atas',
-      value: '14573',
+      value: 14573,
     },
   ];
 
@@ -67,17 +67,17 @@ export default function Home() {
     {
       id: 1,
       title: 'Sekolah Dasar',
-      value: '24004000',
+      value: 24004000,
     },
     {
       id: 2,
       title: 'Sekolah Menengah Pertama',
-      value: '9970000',
+      value: 9970000,
     },
     {
       id: 3,
       title: 'Sekolah Menengah Atas',
-      value: '5008000',
+      value: 5008000,
     },
   ];
 
@@ -134,19 +134,19 @@ export default function Home() {
           <DynamicSchoolDistributionMap data={locationData} />
           <div className="flex flex-wrap gap-3 py-4">
             <div className="flex flex-row gap-1 items-center">
-              <Image src="/militer.png" width={20} height={20} />
+              <Image src="/militer.png" width={20} height={20} alt='militer'/>
               <p className="text-sm font-medium">Koramil</p>
             </div>
             <div className="flex flex-row gap-1 items-center">
-              <Image src="/tk.png" width={20} height={20} />
+              <Image src="/tk.png" width={20} height={20} alt='tk'/>
               <p className="text-sm font-medium">TK/KB/PAUD/PKBM/SPS</p>
             </div>
             <div className="flex flex-row gap-1 items-center">
-              <Image src="/sd.png" width={20} height={20} />
+              <Image src="/sd.png" width={20} height={20} alt='sd'/>
               <p className="text-sm font-medium">SD</p>
             </div>
             <div className="flex flex-row gap-1 items-center">
-              <Image src="/smp.png" width={20} height={20} />
+              <Image src="/smp.png" width={20} height={20} alt='smp'/>
               <p className="text-sm font-medium">SMP</p>
             </div>
           </div>
