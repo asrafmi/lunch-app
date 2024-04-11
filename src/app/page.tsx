@@ -5,9 +5,10 @@ import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import CountUp from 'react-countup';
 import { useProvince, useCity, useDistrict } from '@/frontend/hooks/region';
-import { LOCATION_DATA } from '@/bin/location-data';
 import { COMPLAINT_DATA, COMPLAINT_HEADER_DATA } from '@/bin/complaint-data';
 import Image from 'next/image';
+import { SCHOOL_LOCATION_DATA } from '@/bin/school-location-data';
+import { KORAMIL_LOCATION_DATA } from '@/bin/koramil-location-data';
 
 const DynamicSchoolDistributionMap = dynamic(
   () => import('./components/SchoolDistributionMap'),
@@ -82,10 +83,17 @@ export default function Home() {
   ];
 
   const submit = () => {
-    const data = LOCATION_DATA.filter(
-      (e) => e.district_id === selectedDistrict
+    const school_data = SCHOOL_LOCATION_DATA.filter(
+      (e) => e.district_id === selectedDistrict && e.city_id === selectedCity
     );
+
+    const koramil_data = KORAMIL_LOCATION_DATA.filter(
+      (e) => e.city_id === selectedCity
+    );
+
+    const data = [...school_data, ...koramil_data];
     console.log('selectedDistrict', selectedDistrict);
+    console.log('selectedCity', selectedCity);
 
     setLocationData(data as any);
     setIsOpen(false);
@@ -134,19 +142,19 @@ export default function Home() {
           <DynamicSchoolDistributionMap data={locationData} />
           <div className="flex flex-wrap gap-3 py-4">
             <div className="flex flex-row gap-1 items-center">
-              <Image src="/militer.png" width={20} height={20} alt='militer'/>
+              <Image src="/militer.png" width={20} height={20} alt="militer" />
               <p className="text-sm font-medium">Koramil</p>
             </div>
             <div className="flex flex-row gap-1 items-center">
-              <Image src="/tk.png" width={20} height={20} alt='tk'/>
+              <Image src="/tk.png" width={20} height={20} alt="tk" />
               <p className="text-sm font-medium">TK/KB/PAUD/PKBM/SPS</p>
             </div>
             <div className="flex flex-row gap-1 items-center">
-              <Image src="/sd.png" width={20} height={20} alt='sd'/>
+              <Image src="/sd.png" width={20} height={20} alt="sd" />
               <p className="text-sm font-medium">SD</p>
             </div>
             <div className="flex flex-row gap-1 items-center">
-              <Image src="/smp.png" width={20} height={20} alt='smp'/>
+              <Image src="/smp.png" width={20} height={20} alt="smp" />
               <p className="text-sm font-medium">SMP</p>
             </div>
           </div>
