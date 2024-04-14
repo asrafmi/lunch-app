@@ -3404,7 +3404,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '04 Apr 2024 15:11:57',
     sekolah_id_enkrip:
       '219F454FF2664FA203F8                                                                                ',
-    lat: null,
+    lat: -6.890712759171274,
     lng: 107.62936526075507,
     district_id: '3273230',
     city_id: '3273',
@@ -3432,7 +3432,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '06 Apr 2024 21:27:37',
     sekolah_id_enkrip:
       '47985E1AFD257E2F8483                                                                                ',
-    lat: null,
+    lat: -6.897546727735866,
     lng: 107.62193316802176,
     district_id: '3273230',
     city_id: '3273',
@@ -3460,7 +3460,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '04 Apr 2024 16:27:40',
     sekolah_id_enkrip:
       '30FA1CE78BB91B776761                                                                                ',
-    lat: null,
+    lat: -6.8746037166520715,
     lng: 107.6171074745386,
     district_id: '3273230',
     city_id: '3273',
@@ -3516,7 +3516,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '22 Feb 2024 14:08:54',
     sekolah_id_enkrip:
       'D730DA7ADB6C8E5009AF                                                                                ',
-    lat: null,
+    lat: -6.879721267800881,
     lng: 107.61037525452873,
     district_id: '3273230',
     city_id: '3273',
@@ -3684,7 +3684,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '01 Apr 2024 22:48:40',
     sekolah_id_enkrip:
       '787831BA347DB6B5D4E2                                                                                ',
-    lat: null,
+    lat: -6.864737339847773,
     lng: 107.61741906793367,
     district_id: '3273230',
     city_id: '3273',
@@ -3712,7 +3712,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '15 Mar 2024 10:51:31',
     sekolah_id_enkrip:
       'AECE6C3CC964EBE2ABCD                                                                                ',
-    lat: null,
+    lat: -6.890159563456238,
     lng: 107.62590911404988,
     district_id: '3273230',
     city_id: '3273',
@@ -3796,7 +3796,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '01 Apr 2024 08:57:20',
     sekolah_id_enkrip:
       '058F11E4860DB7BCA762                                                                                ',
-    lat: null,
+    lat: -6.875099661340039,
     lng: 107.6162737450001,
     district_id: '3273230',
     city_id: '3273',
@@ -3824,7 +3824,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '21 Mar 2024 12:14:55',
     sekolah_id_enkrip:
       '1A0C789056466A70D582                                                                                ',
-    lat: null,
+    lat: -6.887902340188544,
     lng: 107.62497597976062,
     district_id: '3273230',
     city_id: '3273',
@@ -3852,7 +3852,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '19 Mar 2024 13:48:22',
     sekolah_id_enkrip:
       '633B724DF056399EE0C2                                                                                ',
-    lat: null,
+    lat: -6.87926085172199,
     lng: 107.61666841035014,
     district_id: '3273230',
     city_id: '3273',
@@ -3880,7 +3880,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '25 Jan 2024 08:39:19',
     sekolah_id_enkrip:
       'B3279ADF848F2A66EE47                                                                                ',
-    lat: null,
+    lat: -6.884323312056432,
     lng: 107.61705008151458,
     district_id: '3273230',
     city_id: '3273',
@@ -3908,7 +3908,7 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '28 Jan 2024 19:25:33',
     sekolah_id_enkrip:
       '52F16133B1C54C97A10C                                                                                ',
-    lat: null,
+    lat: -6.887948424984006,
     lng: 107.62326965149877,
     district_id: '3273230',
     city_id: '3273',
@@ -4888,8 +4888,8 @@ export const SCHOOL_LOCATION_DATA = [
     sinkron_terakhir: '06 Mar 2024 09:28:04',
     sekolah_id_enkrip:
       'C26E1ADF9EA14D759632                                                                                ',
-    lat: null,
-    lng: null,
+    lat: 0,
+    lng: 0,
     district_id: '3273230',
     city_id: '3273',
   },
