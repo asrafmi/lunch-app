@@ -1,7 +1,7 @@
 export const KORAMIL_LOCATION_DATA = [
   {
     nama: 'Koramil 1801/Astana Anyar, di Jl. Babakan Tarogong',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F721',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F720',
     city_id: '3273',
     lat: -6.928151152655486,
     lng: 107.58847628448889,
@@ -10,7 +10,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1802/Cibeunying, di Jl. Cikutra',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F722',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F750',
     city_id: '3273',
     lat: -6.8933471650074765,
     lng: 107.6364748330591,
@@ -19,7 +19,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1803/Andir - Cicendo, di Jl. Minyak Tanah',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F721',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F751',
     city_id: '3273',
     lat: -6.914893849823485,
     lng: 107.5905801311158,
@@ -28,7 +28,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1804/Regol - Lengkong, di Jl. Moch Toha',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F722',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F782',
     city_id: '3273',
     lat: -6.933319104498938,
     lng: 107.60688599001139,
@@ -37,7 +37,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1805/Kiaracondong, di Jl. Babakan Sari',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F721',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F754',
     city_id: '3273',
     lat: -6.924054052699935,
     lng: 107.65455350780232,
@@ -46,7 +46,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1806/Bandung Kulon, di Jl. Holis',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F722',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F783',
     city_id: '3273',
     lat: -6.9253327916264515,
     lng: 107.57428006479441,
@@ -55,7 +55,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1807/Sukasari - Sukajadi, di Jl. Geger Kalong Girang',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F722',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F784',
     city_id: '3273',
     lat: -6.864430314735482,
     lng: 107.59301467162904,
@@ -64,7 +64,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1808/Coblong - Cidadap, di Jl. Tubagus Ismail',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F721',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F755',
     city_id: '3273',
     lat: -6.888227350705787,
     lng: 107.62496563639752,
@@ -73,7 +73,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1809/Gedebage, di Jl. Ciwastra',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F722',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F786',
     city_id: '3273',
     lat: -6.960982365530122,
     lng: 107.66621337372251,
@@ -82,7 +82,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1810/Arcamanik, di Jl. Parakan Saat',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F722',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F787',
     city_id: '3273',
     lat: -6.928302184951345,
     lng: 107.67294261393641,
@@ -91,7 +91,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1811/Ujung Berung, di Jl. Raya Ujung Berung',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F721',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F756',
     city_id: '3273',
     lat: -6.913467190107958,
     lng: 107.6944671078022,
@@ -100,7 +100,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1812/Tamansari, di Jl. Tamansari',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F722',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F788',
     city_id: '3273',
     lat: -6.897404209854874,
     lng: 107.60944322259279,
@@ -109,7 +109,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1813/Bojongloa Kidul - Cibaduyut, di Jl. Taman Cibaduyut',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F721',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F757',
     city_id: '3273',
     lat: -6.95236315413812,
     lng: 107.59521387876401,
@@ -118,7 +118,7 @@ export const KORAMIL_LOCATION_DATA = [
   },
   {
     nama: 'Koramil 1814/Batununggal, di Komplek Batununggal',
-    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F722',
+    koramil_id: 'E5C6D2B5-E7E8-46CE-83F2-2D5342C6F789',
     city_id: '3273',
     lat: -6.960510396201079,
     lng: 107.62410043111628,
