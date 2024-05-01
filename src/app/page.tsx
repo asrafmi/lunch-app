@@ -83,7 +83,11 @@ export default function Home() {
   ];
 
   const submit = () => {
-    const school_data = SCHOOL_LOCATION_DATA.filter(
+    const FILTERED_SCHOOL_LOCATION_DATA = SCHOOL_LOCATION_DATA.filter(
+      (e) => e.lat !== null && e.lng !== null
+    );
+
+    const school_data = FILTERED_SCHOOL_LOCATION_DATA.filter(
       (e) => e.district_id === selectedDistrict && e.city_id === selectedCity
     );
 
@@ -257,7 +261,7 @@ export default function Home() {
                       htmlFor="countries"
                       className="block mt-2 mb-2 text-sm font-medium text-gray-900"
                     >
-                      Pilih Provinsi
+                      Provinsi
                     </label>
                     <select
                       id="countries"
@@ -265,6 +269,7 @@ export default function Home() {
                       onChange={handleChangeProvince}
                       value={selectedProvince}
                     >
+                      <option value="">Pilih Provinsi</option>
                       {province && province.length
                         ? province.map((item: any) => (
                             <option key={item.id} value={item.id}>
@@ -277,7 +282,7 @@ export default function Home() {
                       htmlFor="city"
                       className="block mt-2 mb-2 text-sm font-medium text-gray-900"
                     >
-                      Pilih Kota/Kabupaten
+                      Kota/Kabupaten
                     </label>
                     <select
                       id="city"
@@ -285,6 +290,7 @@ export default function Home() {
                       onChange={handleChangeCity}
                       value={selectedCity}
                     >
+                      <option value="">Pilih Kota/Kabupaten</option>
                       {selectedProvince && city.length
                         ? city.map((item: any) => (
                             <option key={item.id} value={item.id}>
@@ -297,7 +303,7 @@ export default function Home() {
                       htmlFor="district"
                       className="block mt-2 mb-2 text-sm font-medium text-gray-900"
                     >
-                      Pilih Kecamatan
+                      Kecamatan
                     </label>
                     <select
                       id="district"
@@ -305,6 +311,7 @@ export default function Home() {
                       onChange={handleChangeDistrict}
                       value={selectedDistrict}
                     >
+                      <option value="">Pilih Kecamatan</option>
                       {selectedCity && district.length
                         ? district.map((item: any) => (
                             <option key={item.id} value={item.id}>
