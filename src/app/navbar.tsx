@@ -1,10 +1,14 @@
 'use client';
 
-import { Fragment } from 'react';
-import { usePathname } from 'next/navigation';
+import { Fragment, useContext } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import to from 'await-to-js';
+import toast from 'react-hot-toast';
+import { AuthContext } from '@/context/Auth';
+import { apiRequest } from '@/infrastructure/api-request';
 
 const navigation = [
   { name: 'Beranda', href: '/' },
@@ -17,8 +21,24 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar({ user }: { user: any }) {
+export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { user } = useContext(AuthContext);
+
+  const handleLogout = async () => {
+    const logoutProcess = apiRequest.post('/auth/logout');
+
+    toast
+      .promise(logoutProcess, {
+        loading: 'Loading...',
+        success: 'Logout success!',
+        error: 'Logout failed!',
+      })
+      .then(() => {
+        router.push('/login');
+      });
+  };
 
   return (
     <Disclosure as="nav" className="bg-white shadow-sm">
@@ -55,10 +75,10 @@ export default function Navbar({ user }: { user: any }) {
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src={user?.image || 'https://avatar.vercel.sh/leerob'}
+                        src={'https://avatar.vercel.sh/leerob'}
                         height={32}
                         width={32}
-                        alt={`${user?.name || 'placeholder'} avatar`}
+                        alt={`${user?.email || 'placeholder'} avatar`}
                       />
                     </Menu.Button>
                   </div>
@@ -75,27 +95,57 @@ export default function Navbar({ user }: { user: any }) {
                       {user ? (
                         <Menu.Item>
                           {({ active }) => (
-                            <button
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'flex w-full px-4 py-2 text-sm text-gray-700'
+                            <>
+                              {user ? (
+                                <button
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'flex w-full px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                  onClick={handleLogout}
+                                >
+                                  Logout
+                                </button>
+                              ) : (
+                                <button
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'flex w-full px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                  onClick={() => router.push('/login')}
+                                >
+                                  Sign in
+                                </button>
                               )}
-                            >
-                              Sign out
-                            </button>
+                            </>
                           )}
                         </Menu.Item>
                       ) : (
                         <Menu.Item>
                           {({ active }) => (
-                            <button
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'flex w-full px-4 py-2 text-sm text-gray-700'
+                            <>
+                              {user ? (
+                                <button
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'flex w-full px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                  onClick={handleLogout}
+                                >
+                                  Logout
+                                </button>
+                              ) : (
+                                <button
+                                  className={classNames(
+                                    active ? 'bg-gray-100' : '',
+                                    'flex w-full px-4 py-2 text-sm text-gray-700'
+                                  )}
+                                  onClick={() => router.push('/login')}
+                                >
+                                  Sign in
+                                </button>
                               )}
-                            >
-                              Sign in
-                            </button>
+                            </>
                           )}
                         </Menu.Item>
                       )}
@@ -142,15 +192,15 @@ export default function Navbar({ user }: { user: any }) {
                     <div className="flex-shrink-0">
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src={user.image}
+                        src={'https://avatar.vercel.sh/leerob'}
                         height={32}
                         width={32}
-                        alt={`${user.name} avatar`}
+                        alt={`${user.email} avatar`}
                       />
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium text-gray-800">
-                        {user.name}
+                        {user.id}
                       </div>
                       <div className="text-sm font-medium text-gray-500">
                         {user.email}
@@ -165,7 +215,10 @@ export default function Navbar({ user }: { user: any }) {
                 </>
               ) : (
                 <div className="mt-3 space-y-1">
-                  <button className="flex w-full px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800">
+                  <button
+                    className="flex w-full px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                    onClick={() => router.push('/login')}
+                  >
                     Sign in
                   </button>
                 </div>
